@@ -21,6 +21,7 @@
       <consultation-desk-reports-number-card />
       <metro-card />
       <agency-card />
+      <japan-map-card />
     </v-row>
   </div>
 </template>
@@ -77,6 +78,9 @@ import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDe
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
 
+// import japanData from '@/data/japan_covid19_data.json'
+import JapanMapCard from '@/components/cards/JapanMapFeaturesCard.vue'
+
 export default {
   components: {
     PageHeader,
@@ -89,7 +93,8 @@ export default {
     TelephoneAdvisoryReportsNumberCard,
     ConsultationDeskReportsNumberCard,
     MetroCard,
-    AgencyCard
+    AgencyCard,
+    JapanMapCard
   },
   data() {
     // 退院者グラフ
@@ -114,7 +119,13 @@ export default {
   },
   head() {
     return {
-      title: this.$t('都内の最新感染動向')
+      title: this.$t('都内の最新感染動向'),
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css'
+        }
+      ]
     }
   }
 }

@@ -30,6 +30,7 @@
       "
     />
     <agency-card v-else-if="this.$route.params.card == 'agency'" />
+    <japan-map-card v-else-if="this.$route.params.card == 'japan-maps'" />
   </div>
 </template>
 
@@ -43,7 +44,8 @@
     "新型コロナコールセンター相談件数": "新型コロナコールセンター相談件数",
     "新型コロナ受診相談窓口相談件数": "新型コロナ受診相談窓口相談件数",
     "都営地下鉄の利用者数の推移": "都営地下鉄の利用者数の推移",
-    "都庁来庁者数の推移": "都庁来庁者数の推移"
+    "都庁来庁者数の推移": "都庁来庁者数の推移",
+    "厚生労働省発表データから見る全国状況": "厚生労働省発表データから見る全国状況"
   },
   "en": {
     "検査陽性者の状況": "Details of confirmed cases",
@@ -53,7 +55,8 @@
     "新型コロナコールセンター相談件数": "Number of inquiries to COVID-19 telephone advisory center",
     "新型コロナ受診相談窓口相談件数": "Number of inquiries to combined telephone advisory center",
     "都営地下鉄の利用者数の推移": "The predicted number of Toei subway passengers",
-    "都庁来庁者数の推移": "Trend in the number of TMG visitors"
+    "都庁来庁者数の推移": "Trend in the number of TMG visitors",
+    "厚生労働省発表データから見る全国状況": "Latest COVID-19 Status from MHLW reports"
   },
   "zh-cn": {
     "検査陽性者の状況": "确诊案例状况",
@@ -63,7 +66,8 @@
     "新型コロナコールセンター相談件数": "新型冠状病毒咨询中心咨询件数",
     "新型コロナ受診相談窓口相談件数": "新冠肺炎就诊咨询窗口的咨询数",
     "都営地下鉄の利用者数の推移": "都营地下铁搭乘人数趋势",
-    "都庁来庁者数の推移": "东京都厅来访人数推移"
+    "都庁来庁者数の推移": "东京都厅来访人数推移",
+    "厚生労働省発表データから見る全国状況": "厚生労働省発表データから見る全国状況"
   },
   "zh-tw": {
     "検査陽性者の状況": "確診案例狀況",
@@ -73,7 +77,8 @@
     "新型コロナコールセンター相談件数": "新型冠狀病毒諮詢中心諮詢件數",
     "新型コロナ受診相談窓口相談件数": "就診窗口諮詢數",
     "都営地下鉄の利用者数の推移": "都營地下鐵搭乘人數走勢",
-    "都庁来庁者数の推移": "東京都廳來訪人數走勢"
+    "都庁来庁者数の推移": "東京都廳來訪人數走勢",
+    "厚生労働省発表データから見る全国状況": "厚生労働省発表データから見る全国状況"
   },
   "ko": {
     "検査陽性者の状況": "확진자의 현황",
@@ -83,7 +88,8 @@
     "新型コロナコールセンター相談件数": "코로나 19 콜센터 문의 건수",
     "新型コロナ受診相談窓口相談件数": "코로나19 진찰 상담 창구 상담 건수",
     "都営地下鉄の利用者数の推移": "도에이 지하철 의 예상 승객 수",
-    "都庁来庁者数の推移": "도쿄도 청사 방문자 수"
+    "都庁来庁者数の推移": "도쿄도 청사 방문자 수",
+    "厚生労働省発表データから見る全国状況": "厚生労働省発表データから見る全国状況"
   },
   "ja-basic": {
     "検査陽性者の状況": "びょうきの ひとは いま",
@@ -93,7 +99,8 @@
     "新型コロナコールセンター相談件数": "コロナウイルス そうだんで でんわが あった かず",
     "新型コロナ受診相談窓口相談件数": "コロナのことで とうきょうと に そうだんした ひとの かず",
     "都営地下鉄の利用者数の推移": "とえいちかてつを つかった ひとの かず",
-    "都庁来庁者数の推移": "議事堂（ぎじどう）に 来（き）た 人（ひと）の 合計（ごうけい）"
+    "都庁来庁者数の推移": "議事堂（ぎじどう）に 来（き）た 人（ひと）の 合計（ごうけい）",
+    "厚生労働省発表データから見る全国状況": "にほんの じょうきょう"
   }
 }
 </i18n>
@@ -110,6 +117,8 @@ import TelephoneAdvisoryReportsNumberCard from '@/components/cards/TelephoneAdvi
 import ConsultationDeskReportsNumberCard from '@/components/cards/ConsultationDeskReportsNumberCard.vue'
 import MetroCard from '@/components/cards/MetroCard.vue'
 import AgencyCard from '@/components/cards/AgencyCard.vue'
+import japanData from '@/data/japan_covid19_data.json'
+import JapanMapCard from '@/components/cards/JapanMapFeaturesCard.vue'
 
 export default {
   components: {
@@ -120,7 +129,8 @@ export default {
     TelephoneAdvisoryReportsNumberCard,
     ConsultationDeskReportsNumberCard,
     MetroCard,
-    AgencyCard
+    AgencyCard,
+    JapanMapCard
   },
   data() {
     let title, updatedAt
@@ -156,6 +166,10 @@ export default {
       case 'agency':
         title = this.$t('都庁来庁者数の推移')
         updatedAt = agencyData.date
+        break
+      case 'japan-maps':
+        title = this.$t('厚生労働省発表データから見る全国状況')
+        updatedAt = japanData.date
         break
     }
 

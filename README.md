@@ -1,64 +1,64 @@
-# 東京都 新型コロナウイルス感染症対策サイト
+# Demo for Tokyo COVID-19 Task Force website
 
-![](https://github.com/tokyo-metropolitan-gov/covid19/workflows/production%20deploy/badge.svg)
-
-[![東京都 新型コロナウイルス感染症対策サイト](https://user-images.githubusercontent.com/1301149/75629392-1d19d900-5c25-11ea-843d-2d4376e3a560.png)](https://stopcovid19.metro.tokyo.lg.jp/)
-
-### 日本語 | [English](./README_EN.md) | [Spanish](./README_ES.md) | [Korean](./README_KO.md) | [Chinese (Taiwan)](./README_ZH_TW.md) | [Chinese (Simplified)](./README_ZH_CN.md) | [Vietnamese](./README_VI.md)
-
-## 貢献の仕方
-Issues にあるいろいろな修正にご協力いただけると嬉しいです。
-
-詳しくは[貢献の仕方](./.github/CONTRIBUTING.md)を御覧ください。
+This site is demo site for tokyo covid-19.
 
 
-## 行動原則
-詳しくは[サイト構築にあたっての行動原則](./.github/CODE_OF_CONDUCT.md)を御覧ください。
+## For Mapbox Setup
 
-## ライセンス
-本ソフトウェアは、[MITライセンス](./LICENSE.txt)の元提供されています。
+![](./assets/covid19-video.gif)
 
-## このサイトから派生したサイト
+### How to Set Up Environments
 
-[Link先](./forkedSites.md)を御覧ください。
+- Required Node.js version: 10.19.0 or higher
 
-## 開発者向け情報
+**Use mapbox gl vue**
+``` bash
+yarn add mapbox-gl-vue
+```
 
-### 環境構築の手順
+https://www.npmjs.com/package/mapbox-gl-vue
 
-- 必要となるNode.jsのバージョン: 10.19.0以上
 
-**yarn を使う場合**
+**Use yarn**
 ``` bash
 # install dependencies
 $ yarn install
 
 # serve with hot reload at localhost:3000
 $ yarn dev
+
+# or you many need to add token for Mapbox
+ACCESS_TOKEN=yourAccessToken yarn dev
 ```
 
-**docker compose を使う場合**
+**Use docker**
 ```bash
 # serve with hot reload at localhost:3000
 $ docker-compose up --build
 ```
 
-### `Cannot find module ****` と怒られた時
+### How to resolve `Cannot find module ****` error
 
-**yarn を使う場合**
+**Use yarn**
 ```
 $ yarn install
 ```
 
-**docker compose を使う場合**
+**Use docker**
 ```bash
 $ docker-compose run --rm app yarn install
 ```
 
-### ステージング・本番環境への反映
+---
 
-`master` ブランチがアップデートされると、自動的に `production` ブランチにHTML類がbuildされます。そして、本番サイト https://stopcovid19.metro.tokyo.lg.jp/ が更新されます。
+[Tokyo COVID-19 Task Force website](https://stopcovid19.metro.tokyo.lg.jp/)
 
-`staging` ブランチがアップデートされると、自動的に `gh-pages` ブランチにHTML類がbuildされます。そして、ステージングサイト https://stg-covid19-tokyo.netlify.com/ が更新されます。
+[日本語](./README.md) | English | [Spanish](./README_ES.md) | [Korean](./README_KO.md) | [Chinese (Taiwan)](./README_ZH_TW.md) | [Chinese (Simplified)](./README_ZH_CN.md) | [Vietnamese](./README_VI.md)
 
-`development` ブランチがアップデートされると、自動的に `dev-pages` ブランチにHTML類がbuildされます。そして、開発用サイト https://dev-covid19-tokyo.netlify.com/ が更新されます。
+
+## Code of Conduct
+
+Please check [Code of conduct for developers](./.github/CODE_OF_CONDUCT_EN.md) for details.
+
+## License
+This software is released under [the MIT License](./LICENSE.txt).
